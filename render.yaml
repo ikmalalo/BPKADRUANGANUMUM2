@@ -1,0 +1,39 @@
+services:
+  # Backend Service
+  - type: web
+    name: bpkad-backend
+    env: node
+    plan: free
+    rootDir: ManajemenRuanganUmum/backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: postgres
+
+  # Frontend Service
+  - type: web
+    name: bpkad-frontend
+    env: static
+    plan: free
+    rootDir: ManajemenRuanganUmum/frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
