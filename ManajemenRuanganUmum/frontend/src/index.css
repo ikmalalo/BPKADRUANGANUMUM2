@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .transition-spring {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 12s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+  20% { opacity: 0.3; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(251,146,60,0.4);
+  animation: floatParticle 10s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes slideStatus {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideStatus {
+  animation: slideStatus 0.25s ease;
+}
+
+@keyframes scaleIn{
+0%{
+opacity:0;
+transform:scale(.9);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes slideUp{
+0%{
+opacity:0;
+transform:translateY(20px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes springPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-springPop {
+  animation: springPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* =====================================
+   REACT DAY PICKER - ORANGE THEME FINAL
+ ===================================== */
+
+/* base calendar */
+
+.rdp {
+  --rdp-accent-color: #f97316;
+  --rdp-background-color: #fff7ed;
+  font-size: 14px;
+}
+
+/* header bulan */
+
+.rdp-caption_label {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* navigation arrow */
+
+.rdp-chevron {
+  fill: #f97316 !important;
+}
+
+.rdp-button:hover {
+  background-color: #fff7ed !important;
+}
+
+/* weekday */
+
+.rdp-head_cell {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* semua tanggal */
+
+.rdp-day {
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+/* tombol tanggal */
+
+.rdp-day_button {
+  color: #111827 !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* remove ALL focus ring */
+
+.rdp-day_button:focus,
+.rdp-day_button:focus-visible,
+.rdp-day:focus,
+.rdp-day:focus-visible,
+.rdp-day button:focus,
+.rdp-day button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* hover tanggal */
+
+.rdp-day:hover {
+  background-color: #fed7aa !important;
+  color: #111827 !important;
+}
+
+/* hari ini */
+
+.rdp-day_today {
+  border: 2px solid #f97316 !important;
+}
+
+/* tanggal dipilih */
+
+.rdp-day_selected,
+.rdp-day_selected:hover,
+.rdp-day[aria-selected="true"],
+.rdp-day[aria-selected="true"]:hover {
+  background-color: #f97316 !important;
+  color: white !important;
+}
+
+/* remove blue highlight safari / chrome */
+
+.rdp-day_button::selection {
+  background: transparent;
+}
+
+/* popup animation */
+
+.calendar-popup {
+  animation: calendarFade 0.18s ease;
+}
+
+@keyframes calendarFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingDot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-loading-dot {
+  animation: loadingDot 1.4s infinite ease-in-out;
+}
+
+/* Slide Transition for Tables */
+@keyframes slideMainRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slideMainRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glow Pulse Animations */
+@keyframes glowPulseGreen {
+  0%, 100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.7); }
+}
+
+@keyframes glowPulseBlue {
+  0%, 100% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.7); }
+}
+
+.animate-glow-green {
+  animation: glowPulseGreen 2s infinite ease-in-out;
+}
+
+.animate-glow-blue {
+  animation: glowPulseBlue 2s infinite ease-in-out;
+}
